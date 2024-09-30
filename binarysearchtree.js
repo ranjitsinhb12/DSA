@@ -117,5 +117,50 @@ class BinarySearchTree {
       result.push(node.key)
     }
   }
+
+  ///// Binary tree Depth First Search will take above node as reference
+  depthFirstSearch(root){
+    const values = []
+    if(root === null){
+      return values // return empty array
+    }
+
+    const stack = [root]
+    while(stack.length > 0){
+      const node = stack.pop()
+      values.push(node.key)
+
+      if(node.right !== null){
+        stack.push(node.right)
+      }
+      if(node.left !== null){
+        stack.push(node.left)
+      }
+    }
+    return values
+  }
+
+  // RecursiveDepthFirstSearch 
+  recursiveDepthFirstSearch(root){
+    const values = []
+    if(root === null){
+      return values
+    }
+
+    const leftValues = recursiveDepthFirstSearch(root.left)
+    const rightValues = this.recursiveDepthFirstSearch(root.right)
+
+    /// first out put [root, [leftvalues], [rightvalues]]
+    //return [root, leftValues, rightValues]
+
+    // second output [values]
+    return [root, ...leftValues, ...rightValues]
+  }
 }
+
+
+
+
+
+
 
