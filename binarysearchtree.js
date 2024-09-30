@@ -156,6 +156,29 @@ class BinarySearchTree {
     // second output [values]
     return [root, ...leftValues, ...rightValues]
   }
+
+  // Breath First Search
+  breathFirstSearch(root){
+    const values = []
+    const queue = [root]
+    if(root === null){
+      return values
+    }
+    if(queue !== null){
+      const node = queue.shift()
+      while(queue.length > 0){
+        values.push(node.key)
+        if(node.left !== null){
+          queue.push(node.left)
+        }
+        if(node.right !== null){
+          queue.push(node.right)
+        }
+      }
+      return values
+    }
+
+  }
 }
 
 
