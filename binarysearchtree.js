@@ -157,8 +157,8 @@ class BinarySearchTree {
     return [root, ...leftValues, ...rightValues]
   }
 
-  // Breath First Search
-  breathFirstSearch(root){
+  // Breadth First Search
+  breadthFirstSearch(root){
     const values = []
     const queue = [root]
     if(root === null){
@@ -178,6 +178,25 @@ class BinarySearchTree {
       return values
     }
 
+  }
+
+  /// Sum with breadth first search
+  sumWithBreadthFirst(root){
+    if(root === null) return 0
+    let values = []
+    let queue = [root]
+    let total = 0;
+    while(queue.length > 0){
+      const node = queue.shift()
+      total += node.key
+      if(node.left !== null){
+        queue.push(node.left)
+      }
+      if(node.right !== null){
+        queue.push(node.right)
+      }
+    }
+    return total
   }
 }
 
